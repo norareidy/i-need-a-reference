@@ -111,7 +111,7 @@ fn get_name_matches(args: &Cli, drivers: Vec<&str>, base_dir: String, sub_dir: S
     } 
 }
 
-pub fn get_two_recently_created(possible_files: &mut Vec<PathBuf>) -> (PathBuf, PathBuf) {
+fn get_two_recently_created(possible_files: &mut Vec<PathBuf>) -> (PathBuf, PathBuf) {
     if possible_files.len() < 2 {
         println!("\nLooks like there aren't enough matching files to compute replacement stats. Sorry!");
         process::exit(1);
@@ -124,12 +124,11 @@ pub fn get_two_recently_created(possible_files: &mut Vec<PathBuf>) -> (PathBuf, 
     }
 
     times.sort_by(|a, b| b.1.cmp(&a.1));
-    // println!("Second most recent file: {}", times.get(1).unwrap().0.display());
 
     return (times.get(0).unwrap().0.to_path_buf(), times.get(1).unwrap().0.to_path_buf());
 }
 
-pub fn get_match(most_recent: &PathBuf, second_most_recent: &PathBuf) -> PathBuf {
+fn get_match(most_recent: &PathBuf, second_most_recent: &PathBuf) -> PathBuf {
     let most_recent_len = (fs::metadata(most_recent).unwrap().len()) as f64;
     let next_recent_len = (fs::metadata(second_most_recent).unwrap().len()) as f64;
 
@@ -143,15 +142,7 @@ pub fn get_match(most_recent: &PathBuf, second_most_recent: &PathBuf) -> PathBuf
     }
 }
 
-pub fn check_empty(file: Option<&PathBuf>) {
-    if file.is_none() {
-        println!("\nLooks like there isn't a good reference file for you.");
-        println!("You might be writing about an entirely new concept, or you mistyped your file name.");
-        process::exit(1);
-    }
-}
-
-pub fn open_match(return_file: PathBuf) {
+fn open_match(return_file: PathBuf) {
     format::open_format();
     let path = format!("{}", return_file.to_string_lossy());
     
@@ -163,7 +154,7 @@ pub fn open_match(return_file: PathBuf) {
                                 .expect("Opening a file");
 }
 
-pub fn get_file_vector(filename: impl AsRef<Path>) -> Vec<String> {
+fn get_file_vector(filename: impl AsRef<Path>) -> Vec<String> {
     let file = File::open(filename).expect("Opening the specified file");
     let buf = BufReader::new(file);
     buf.lines()
@@ -171,7 +162,7 @@ pub fn get_file_vector(filename: impl AsRef<Path>) -> Vec<String> {
         .collect()
 }
 
-pub fn calculate_percent_diff(first_file_vec: Vec<String>, second_file_vec: Vec<String>) -> f64 {
+fn calculate_percent_diff(first_file_vec: Vec<String>, second_file_vec: Vec<String>) -> f64 {
     let first_file_set: HashSet<_> = first_file_vec.iter().clone().collect();
     let second_file_set: HashSet<_> = second_file_vec.iter().clone().collect();
     let diff: Vec<_> = first_file_set.difference(&second_file_set).collect();
