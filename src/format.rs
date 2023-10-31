@@ -29,15 +29,16 @@ pub fn open_format() {
 }
 
 pub fn stats_format(diff: f64, tier: u64, name: &String, category: &String, avg: f64, description: &String) {
-    let mut scr = Screen::new(65,4);
+    let mut scr = Screen::new(50,4);
     scr.print_fbg(0, 2, "Opened!", Color::Black, Color::Green);
     scr.draw();
 
     println!("\n");
     let delay = Duration::from_millis(30);
-    slow_print("\nCalculating replacement information.......", delay);
+    let tier_info = format!("tier {}", tier);
+    slow_print("Calculating replacement information.......", delay);
     println!("\n");
     println!("You will probably replace about {:.2} percent of the '{}' reference file.", style(diff).cyan().on_black(), name);
     println!("On average, files in the '{}' category are {:.2} percent different from their counterparts in other doc sets.", category, avg);
-    println!("Your new file requires tier {} replacement, which means you'll replace {}.", tier, style(description).cyan().on_black());
+    println!("Your new file requires {} replacement, which means you'll replace {}.", style(tier_info).cyan().on_black(), description);
 }

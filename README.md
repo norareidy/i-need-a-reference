@@ -5,7 +5,7 @@ relatively similar page as a starting point to copy, paste, then tweak according
 
 ## Installation
 
-On your command line, navigate to the directory that contains a sub-directory housing all
+On your command line, navigate to the directory that contains a subdirectory housing all
 of your driver docs repositories. Then, clone the `i-need-a-reference` repository.
 
 For example, if all your driver docs repositories (`docs-java`, `docs-golang`, etc.) live in a
