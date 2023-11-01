@@ -101,7 +101,7 @@ fn get_name_matches(args: &Cli, drivers: Vec<&str>, base_dir: String, sub_dir: S
         for entry in glob(&path).expect("Reading glob pattern") {
             match entry {
                 Ok(path) => {
-                    if path.file_name().expect("REASON").to_str().unwrap().eq(&args.filename) {
+                    if path.file_name().expect("Retrieving file name").to_str().unwrap().eq(&args.filename) {
                         possible_files.push(path);
                     }
                 },
