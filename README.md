@@ -6,7 +6,7 @@ relatively similar page as a starting point to copy, paste, then tweak according
 ## Prerequisites
 
 First, make sure you have Rust installed. Follow [these instructions](https://www.rust-lang.org/tools/install)
-for instructions on how to do so.
+to do so.
 
 ## Installation
 
