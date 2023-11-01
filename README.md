@@ -3,6 +3,11 @@
 Are you writing a new page for one of the drivers documentation sets? Do you need an existing,
 relatively similar page as a starting point to copy, paste, then tweak accordingly? Look no further.
 
+## Prerequisites
+
+First, make sure you have Rust installed. Follow [these instructions](https://www.rust-lang.org/tools/install)
+for instructions on how to do so.
+
 ## Installation
 
 On your command line, navigate to the directory that contains a subdirectory housing all
